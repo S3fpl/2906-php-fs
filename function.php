@@ -1,16 +1,16 @@
 <?php
 
-function greetings() {
-    echo "Seif Ayman";
+function greetings($name) {
+    echo $name;
     echo "<br>";
     echo "<hr>";
 }
 
-greetings();
-greetings();
-greetings();
-greetings();
-greetings();
-greetings();
-greetings();
-greetings();
+greetings(  'Seif');
+// greetings();
+// greetings();
+// greetings(); 
+// greetings();
+// greetings();
+// greetings();
+// greetings();

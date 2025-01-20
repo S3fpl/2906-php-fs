@@ -12,6 +12,7 @@
     <nav>
         <a href="#">Home</a>
         <a href="/variables.php">Variables</a>
+        <a href="/function.php">Function</a>
     </nav>
 </body>
 </html>
