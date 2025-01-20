@@ -8,5 +8,10 @@
 <body>
     <h1>Home Page</h1>
     <h1>Seif Ayman Ahmed</h1>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="/variables.php">Variables</a>
+    </nav>
 </body>
 </html>
