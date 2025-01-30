@@ -16,6 +16,6 @@ The following technologies were utilized in building this project:
 - 📱 Responsive layout  
 
 ## Installation & Usage  
-1. Clone the repository:  
+1. Clone using the web URL:  
    ```bash
    git clone https://github.com/S3fpl/2906-php-fs.git
