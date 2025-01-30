@@ -1,13 +1,12 @@
-# Challenge
+#Seif Ayman:
 
- Each one of us will:
-- fork the repo
-- create a local folder
-- link your remote repo to the local folder
-    * git remote add origin YOUR-REPO.git
-- pull the remote
-    * git pull origin main
-- make a new file in your local folder
-- commit your changes
-- push your updates to your online repos
-- You may do that many times
+The task has been written.
+
+Cute design added to the code 
+
+Languages ​​used:
+
+1- Html
+2- CSS
+3-JavaScript
+4-Php
