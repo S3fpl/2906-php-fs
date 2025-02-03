@@ -71,6 +71,10 @@ $newLinks = [
     ['url' => '/layout/function/compoundInterest.php', 'text' => 'Calculate Compound Interest'],
     ['url' => '/layout/function/findPercentage.php', 'text' => 'Calculate Percentage'],
 ];
+
+$task = [
+    ['url' => '/layout/task/task-1.php', 'text' => 'Task 1'],
+];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -102,6 +106,8 @@ $newLinks = [
     generateLinks($newLinks, 'New Resources');
     // Challenge Links Section
     generateLinks($challengeLinks, 'Challenge Resources');
+    // Task
+    generateLinks($task, 'Task');
     ?>
 
 </body>
