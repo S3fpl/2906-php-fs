@@ -35,7 +35,19 @@ $oldLinks = [
 $dumbLinks=[
     ['url' => '/layout/dump/dump.php', 'text' => 'Dumb'],
     ['url' => '/layout/dump/global.php', 'text' => 'Global'],
+    ['url' => '/layout/dump/practice.php', 'text' => 'Practice'],
 ];
+
+$challengeLinks = [
+    ['url' => '/layout/challenge/introduce.php', 'text' => 'Introduce'],
+    ['url' => '/layout/challenge/fullName.php', 'text' => 'Full Name'],
+    ['url' => '/layout/challenge/product.php', 'text' => 'Product'],
+    ['url' => '/layout/challenge/book.php', 'text' => 'Book'],
+    ['url' => '/layout/challenge/contact.php', 'text' => 'Contact'],
+    ['url' => '/layout/challenge/movie.php', 'text' => 'Movie'],
+];
+
+
 
 $newLinks = [
     ['url' => '/layout/function/addNumbers.php', 'text' => 'Add Numbers'],
@@ -62,31 +74,34 @@ $newLinks = [
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP Challenges</title>
-    <link rel="stylesheet" href="/layout/css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap" rel="stylesheet">
-</head>
-
-<body>
-    <div class="header">
-        <h1>PHP Challenges</h1>
-    </div>
-    <div class="card">
-        <h2>Seif Ayman Ahmed</h2>
-    </div>
-
-    <?php
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PHP Challenges</title>
+        <link rel="stylesheet" href="/layout/css/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap" rel="stylesheet">
+    </head>
+    
+    <body>
+        <div class="header">
+            <h1>PHP Challenges</h1>
+        </div>
+        <div class="card">
+            <h2>Seif Ayman Ahmed</h2>
+        </div>
+        
+        <?php
     // Old Links Section
     generateLinks($oldLinks, 'Old Resources');
+    // Dumb Links Section
     generateLinks($dumbLinks, 'Dumb Resources');
     // New Links Section
     generateLinks($newLinks, 'New Resources');
+    // Challenge Links Section
+    generateLinks($challengeLinks, 'Challenge Resources');
     ?>
 
 </body>

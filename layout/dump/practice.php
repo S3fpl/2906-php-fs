@@ -22,13 +22,19 @@
                 </hgroup>
                 <div class="body">
                     <?php
-                    function addNumbers($num1, $num2)
+                    function about($name, $age)
                     {
-                        echo "The sum is: " . ($num1 + $num2);
+                        echo "I am " . $name . " I have " . $age . " years old.<br>";
                     }
-                    addNumbers(5, 10);
-
                     ?>
+                    <pre>
+<?php
+about("Adham", "25");
+about("Nada", "23");
+about("Seif", "17");
+?>
+</pre>
+
 
                 </div>
             </div>
