@@ -44,6 +44,15 @@
                     $status = 'pending';
                     $color = getStatusColor($status);
 
+                    $style = "
+                    padding: 0;
+                    padding: 40px;
+                    border-radius: 5px;
+                    color: white;
+                    text-align: center;
+                    background-color: $color;
+                ";
+
                     echo "<pre><code>" . htmlspecialchars('
 function getStatusColor($status) {
     switch ($status) {
@@ -64,7 +73,7 @@ function getStatusColor($status) {
     }
 }
 ') . "</code></pre>";
-                    echo "<p style='color: $color;'>Status: $status, Color: $color</p>";
+                    echo "<p style='color: $style;'>Status: $status, Color: $color</p>";
 
                     ?>
                 </div>
