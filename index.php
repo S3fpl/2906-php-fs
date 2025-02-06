@@ -74,6 +74,12 @@ $newLinks = [
 
 $task = [
     ['url' => '/layout/task/task-1.php', 'text' => 'Task 1'],
+    ['url' => '/layout/task/task-2.php', 'text' => 'Task 2'],
+];
+
+$challenge2 = [
+    ['url' => '/layout/challenge-2/task-1.php', 'text' => 'task-1'],
+    ['url' => '/layout/challenge-2/task-2.php', 'text' => 'task-2'],
 ];
 ?>
 <!DOCTYPE html>
@@ -106,8 +112,10 @@ $task = [
     generateLinks($newLinks, 'New Resources');
     // Challenge Links Section
     generateLinks($challengeLinks, 'Challenge Resources');
-    // Task
+    // Task Links Section
     generateLinks($task, 'Task');
+    // Challenge 2 Links Section
+    generateLinks($challenge2, 'Challenge Resources');
     ?>
 
 </body>
