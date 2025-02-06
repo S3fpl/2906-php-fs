@@ -22,37 +22,39 @@
                 </hgroup>
                 <div class="body">
                     <?php
-                    $status = 'pending';
-                    $color = '';
-
-                    $statusColorMap = [
-                        'Cancelled' => 'red',
-                        'Refunded' => 'red',
-                        'Complain' => 'red',
-                        'Pending' => 'blue',
-                        'On Hold' => 'blue',
-                        'Postponed' => 'blue',
-                        'Delivered' => 'green',
-                        'Shipped' => 'green',
-                        'Reviewed' => 'green',
-                    ];
-
-                    if (array_key_exists($status, $statusColorMap)) {
-                        $color = $statusColorMap[$status];
-                    } else {
-                        $color = 'gray';
+                    function getStatusColor($status)
+                    {
+                        return match ($status) {
+                            'Cancelled', 'Refunded', 'Complain' => 'red',
+                            'Pending', 'On Hold', 'Postponed' => 'blue',
+                            'Delivered', 'Shipped', 'Reviewed' => 'green',
+                            default => 'gray',
+                        };
                     }
 
+                    $status = 'pending';
+                    $color = getStatusColor($status);
                     $style = "
-    padding:30px;
-    border-radius: 5px;
-    color: white;
-    text-align: center;
-    background-color: $color;
-    margin : 30px;
-";
+                    padding: 0;
+                    padding: 40px;
+                    border-radius: 5px;
+                    color: white;
+                    text-align: center;
+                    background-color: $color;
+                ";
+                    echo "<pre><code>" . htmlspecialchars('
+function getStatusColor($status) {
+    return match ($status) {
+        "Cancelled", "Refunded", "Complain" => "red",
+        "Pending", "On Hold", "Postponed" => "blue",
+        "Delivered", "Shipped", "Reviewed" => "green",
+        default => "gray",
+    };
+}
+') . "</code></pre>";
 
-                    echo "<div style='$style'>Status: $status <br> Color: $color</div>";
+                    echo "<p style='color: $style; font-size: 20px; font-weight: bold;'>Status: $status, Color: $color</p>";
+
                     ?>
                 </div>
             </div>
