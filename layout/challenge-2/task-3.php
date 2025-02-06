@@ -47,7 +47,6 @@
     padding:30px;
     border-radius: 5px;
     color: white;
-    font-family: Arial, sans-serif;
     text-align: center;
     background-color: $color;
     margin : 30px;
