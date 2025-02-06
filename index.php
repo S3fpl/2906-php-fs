@@ -80,6 +80,7 @@ $task = [
 $challenge2 = [
     ['url' => '/layout/challenge-2/task-1.php', 'text' => 'task-1'],
     ['url' => '/layout/challenge-2/task-2.php', 'text' => 'task-2'],
+    ['url' => '/layout/challenge-2/task-3.php', 'text' => 'task-3'],
 ];
 ?>
 <!DOCTYPE html>
