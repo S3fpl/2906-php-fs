@@ -77,6 +77,19 @@ $task = [
     ['url' => '/layout/task/task-2.php', 'text' => 'Task 2'],
 ];
 
+$task2 = [
+    ['url' => '/layout/task-2/even.php', 'text' => 'Even'],
+    ['url' => '/layout/task-2/odd.php', 'text' => 'Odd'],
+];
+
+$task3= [
+    ['url' => '/layout/task-3/loop-1.php', 'text' => 'LOOP-1'],
+    ['url' => '/layout/task-3/loop-2.php', 'text' => 'LOOP-2'],
+    ['url' => '/layout/task-3/loop-3.php', 'text' => 'LOOP-3'],
+    ['url' => '/layout/task-3/loop-4.php', 'text' => 'LOOP-4'],
+    ['url' => '/layout/task-3/loop-5.php', 'text' => 'LOOP-5'],
+];
+
 $challenge2 = [
     ['url' => '/layout/challenge-2/task-1.php', 'text' => 'task-1'],
     ['url' => '/layout/challenge-2/task-2.php', 'text' => 'task-2'],
@@ -117,6 +130,10 @@ $challenge2 = [
     generateLinks($task, 'Task');
     // Challenge 2 Links Section
     generateLinks($challenge2, 'Challenge Resources');
+    // Task 2 Links Section
+    generateLinks($task2, 'Task-2');
+    // Task 3 Links Section
+    generateLinks($task3, 'Task-3');
     ?>
 
 </body>
