@@ -1,5 +1,5 @@
 body {
-  font-family: "DynaPuff" ;
+  font-family: "Montserrat";
   background-color: #121212;
   color: #e0e0e0;
   margin: 0;
@@ -7,24 +7,115 @@ body {
 }
 
 .header {
-  text-align: center;
-  padding: 20px;
-  background-color: #121212;
-  color: #ffffff;
-  font-size: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  width: 90%;
+  margin: auto;
+  padding: 5px 18px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(18, 18, 18, 0.7);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
 }
 
-.card {
-  text-align: center;
+.name {
+  font-family: "Merienda";
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.links ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.links li a {
+  position: relative;
+  text-decoration: none;
   color: #fff;
-  background: rgb(243,144,79);
-  background: linear-gradient(90deg, rgba(243,144,79,1) 0%, rgba(59,67,113,1) 98%);
-  padding: 20px;
-  margin: 20px auto;
-  width: 350px;
+  padding: 5px 0;
+  transition: color 0.3s ease-in-out;
+}
+
+.links li a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background: #9b59b6;
+  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+.links li a:hover {
+  color: #9b59b6;
+}
+
+.links li a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 280px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  letter-spacing: 2px;
+  border: 2px solid #333333;
+  padding: 12px 15px;
+  background: #222;
+  opacity: 80%;
+}
+
+.label:hover {
+  border: 2px solid #9b59b6;
+  box-shadow:
+    3px 3px 7px rgba(155, 89, 182, 0.8),
+    -3px -3px 7px rgba(142, 68, 173, 0.8);
+  transition: all 0.3s ease-in-out;
+  opacity: 100%;
+}
+
+.search_bar {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #fff;
+  width: 100%;
+}
+
+.search_bar::placeholder {
+  color: #c5c5c5;
+  opacity: 0.7;
+}
+
+.shortcut {
+  position: absolute;
+  font-family: Montserrat;
+  font-weight: 700;
+  letter-spacing: 1px;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+  color: #fff;
+  background-color: #3b3b3d;
+  padding: 8px 8px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 .link-section {
@@ -37,9 +128,9 @@ body {
 
 .link-section h3 {
   text-align: center;
+  font-family: "Merienda";
   color: #fff;
-  background: rgb(243,144,79);
-  background: linear-gradient(90deg, rgb(243, 144, 79) 0%, rgba(59,67,113,1) 98%);
+  background: linear-gradient(90deg, #9b59b6 0%, #5e3370 98%);
   padding: 15px;
   margin: 20px auto;
   width: 350px;
@@ -72,7 +163,7 @@ body {
   font-size: 16px;
   padding: 10px 15px;
   border-radius: 5px;
-  border-left: solid 5px #f3904f;
+  border-left: solid 5px #9b59b6;
   position: relative;
   overflow: hidden;
   opacity: 80%;
@@ -81,17 +172,17 @@ body {
 .link-section a:hover {
   background-color: #333333;
   opacity: 100%;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .link-section a::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #f3904f;
+  background-color: #9b59b6;
   transition: width 0.3s ease-in-out;
 }
 
@@ -104,9 +195,151 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #333333;
+  background-color: #9b59b6;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #413f3f;
+  background-color: #5e3370;
+}
+.switch {
+  --input-focus: #2d8cf0;
+  --font-color: #323232;
+  --font-color-sub: #666;
+  --bg-color: #fff;
+  --bg-color-alt: #666;
+  --main-color: #323232;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 50px;
+  height: 20px;
+}
+
+.toggle {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  box-shadow: 4px 4px var(--main-color);
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-color);
+  transition: 0.3s;
+}
+
+.slider:before {
+  box-sizing: border-box;
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  border: 2px solid var(--main-color);
+  border-radius: 5px;
+  left: -2px;
+  bottom: 2px;
+  background-color: var(--bg-color);
+  box-shadow: 0 3px 0 var(--main-color);
+  transition: 0.3s;
+}
+
+.toggle:checked + .slider {
+  background-color: var(--input-focus);
+}
+
+.toggle:checked + .slider:before {
+  transform: translateX(30px);
+}
+
+.light-mode {
+  background-color: #f5f5f5;
+  color: #121212;
+}
+
+.light-mode .header {
+  background: rgba(255, 255, 255, 0.7);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.light-mode .label {
+  background: #fff;
+  border: 2px solid #ccc;
+}
+
+.light-mode .links li a {
+  color: #121212;
+}
+
+.light-mode .links li a:hover {
+  color: #9b59b6;
+}
+
+.light-mode .link-section {
+  background-color: #e0e0e0;
+}
+
+.light-mode .link-section h3 {
+  background: linear-gradient(90deg, #9b59b6 0%, #5e3370 98%);
+  color: #fff;
+}
+
+.light-mode .link-section a {
+  background-color: #ddd;
+  color: #333;
+}
+
+.light-mode .link-section a:hover {
+  background-color: #ccc;
+}
+
+.light-mode .switch {
+  --main-color: #666;
+  --bg-color: #ddd;
+  --input-focus: #9b59b6;
+}
+
+.search-bar {
+  position: relative;
+  width: 100%;
+  max-width: 400px; /* عرض مناسب */
+}
+
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 0;
+  display: none;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.suggestions li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.suggestions li:hover {
+  background: #f0f0f0;
 }

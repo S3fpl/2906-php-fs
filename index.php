@@ -32,7 +32,7 @@ $oldLinks = [
     ['url' => '/layout/php/power_of_number.php', 'text' => 'Power of Number'],
 ];
 
-$dumbLinks=[
+$dumbLinks = [
     ['url' => '/layout/dump/dump.php', 'text' => 'Dumb'],
     ['url' => '/layout/dump/global.php', 'text' => 'Global'],
     ['url' => '/layout/dump/practice.php', 'text' => 'Practice'],
@@ -82,7 +82,7 @@ $task2 = [
     ['url' => '/layout/task-2/odd.php', 'text' => 'Odd'],
 ];
 
-$task3= [
+$task3 = [
     ['url' => '/layout/task-3/loop-1.php', 'text' => 'LOOP-1'],
     ['url' => '/layout/task-3/loop-2.php', 'text' => 'LOOP-2'],
     ['url' => '/layout/task-3/loop-3.php', 'text' => 'LOOP-3'],
@@ -95,47 +95,216 @@ $challenge2 = [
     ['url' => '/layout/challenge-2/task-2.php', 'text' => 'task-2'],
     ['url' => '/layout/challenge-2/task-3.php', 'text' => 'task-3'],
 ];
+
+$allLinks = array_merge($oldLinks, $dumbLinks, $challengeLinks, $challenge2, $newLinks, $task, $task2, $task3);
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>PHP Challenges</title>
-        <link rel="stylesheet" href="/layout/css/style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap" rel="stylesheet">
-    </head>
-    
-    <body>
-        <div class="header">
-            <h1>PHP Challenges</h1>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Challenges</title>
+    <link rel="stylesheet" href="/layout/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="name">
+            <h1>Seif Ayman Ahmed</h1>
         </div>
-        <div class="card">
-            <h2>Seif Ayman Ahmed</h2>
+        <nav class="links">
+            <ul>
+                <li><a href="/layout/index.php">Home</a></li>
+                <li><a href="/layout/about.php">About</a></li>
+                <li><a href="/layout/contact.php">Contact</a></li>
+                <li><a href="/layout/logout.php">Logout</a></li>
+            </ul>
+        </nav>
+        <div class="search-bar">
+            <form id="searchForm">
+                <label class="label">
+                    <input type="text" class="search_bar" id="searchInput" placeholder="Search for something..." required autocomplete="off" oninput="showSuggestions()" />
+                    <div class="shortcut" onclick="performSearch()">Enter</div>
+                </label>
+                <ul id="suggestionsList" class="suggestions"></ul>
+            </form>
         </div>
-        
-        <?php
-    // Old Links Section
+
+        <label class="switch">
+            <input id="themeToggle" class="toggle" type="checkbox">
+            <span class="slider"></span>
+            <span class="card-side"></span>
+        </label>
+    </header>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const searchInput = document.getElementById("searchInput");
+            const themeToggle = document.getElementById("themeToggle");
+            const body = document.body;
+            const allLinks = <?php echo json_encode($allLinks); ?>;
+            const suggestionsList = document.getElementById("suggestionsList");
+
+            function showSuggestions() {
+                let inputValue = formatSearchInput(searchInput.value).toLowerCase();
+                suggestionsList.innerHTML = "";
+
+                if (!inputValue) {
+                    suggestionsList.style.display = "none";
+                    return;
+                }
+
+                let filteredLinks = allLinks.filter(link =>
+                    link.text.toLowerCase().includes(inputValue)
+                );
+
+                if (filteredLinks.length === 0) {
+                    suggestionsList.style.display = "none";
+                    return;
+                }
+
+                filteredLinks.forEach(link => {
+                    let listItem = document.createElement("li");
+                    listItem.textContent = link.text;
+                    listItem.onclick = () => {
+                        searchInput.value = link.text;
+                        suggestionsList.style.display = "none";
+                    };
+                    suggestionsList.appendChild(listItem);
+                });
+
+                suggestionsList.style.display = "block";
+            }
+
+            function performSearch() {
+                const searchValue = formatSearchInput(searchInput.value);
+                const selectedLink = allLinks.find(link => formatSearchInput(link.text) === searchValue);
+
+                if (selectedLink) {
+                    window.location.href = selectedLink.url;
+                } else {
+                    alert("Page not found! Please select a valid option.");
+                }
+            }
+
+            function formatSearchInput(input) {
+                return input
+                    .split(/(\s+)/)
+                    .map(word => word.length > 0 ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() : word)
+                    .join("");
+            }
+
+            document.addEventListener("click", function(event) {
+                if (!searchInput.contains(event.target) && !suggestionsList.contains(event.target)) {
+                    suggestionsList.style.display = "none";
+                }
+            });
+
+            if (localStorage.getItem("theme") === "dark" || !localStorage.getItem("theme")) {
+                body.classList.remove("light-mode");
+                themeToggle.checked = false;
+            } else {
+                body.classList.add("light-mode");
+                themeToggle.checked = true;
+            }
+
+            themeToggle.addEventListener("change", () => {
+                if (themeToggle.checked) {
+                    body.classList.add("light-mode");
+                    localStorage.setItem("theme", "light");
+                } else {
+                    body.classList.remove("light-mode");
+                    localStorage.setItem("theme", "dark");
+                }
+            });
+            searchInput.addEventListener("input", function() {
+                this.value = formatSearchInput(this.value);
+            });
+
+            document.addEventListener("keydown", function(event) {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    performSearch();
+                }
+            });
+        });
+
+        function performSearch() {
+            const searchInput = document.getElementById("searchInput").value;
+            const formattedSearch = formatSearchInput(searchInput); // تنسيق الإدخال قبل البحث
+            const allLinks = <?php echo json_encode($allLinks); ?>;
+            const selectedLink = allLinks.find(link => formatSearchInput(link.text) === formattedSearch);
+
+            if (selectedLink) {
+                window.location.href = selectedLink.url;
+            } else {
+                alert("Page not found! Please select a valid option.");
+            }
+        }
+
+        function formatSearchInput(input) {
+            return input
+                .split(/(\s+)/)
+                .map(word => word.length > 0 ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() : word)
+                .join("");
+        }
+
+        function showSuggestions() {
+            let inputValue = formatSearchInput(searchInput.value).toLowerCase();
+            suggestionsList.innerHTML = "";
+
+            if (!inputValue) {
+                suggestionsList.style.display = "none";
+                return;
+            }
+
+            let filteredLinks = allLinks.filter(link =>
+                link.text.toLowerCase().includes(inputValue)
+            );
+
+            if (filteredLinks.length === 0) {
+                suggestionsList.style.display = "none";
+                return;
+            }
+
+            filteredLinks.forEach(link => {
+                let listItem = document.createElement("li");
+                listItem.textContent = link.text;
+                listItem.onclick = () => {
+                    searchInput.value = link.text;
+                    suggestionsList.style.display = "none";
+                    window.location.href = link.url;
+                };
+                suggestionsList.appendChild(listItem);
+            });
+
+            suggestionsList.style.display = "block";
+        }
+
+        document.addEventListener("click", function(event) {
+            if (!searchInput.contains(event.target) && !suggestionsList.contains(event.target)) {
+                suggestionsList.style.display = "none";
+            }
+        });
+    </script>
+
+
+
+
+    <?php
     generateLinks($oldLinks, 'Old Resources');
-    // Dumb Links Section
     generateLinks($dumbLinks, 'Dumb Resources');
-    // New Links Section
     generateLinks($newLinks, 'New Resources');
-    // Challenge Links Section
     generateLinks($challengeLinks, 'Challenge Resources');
-    // Task Links Section
-    generateLinks($task, 'Task');
-    // Challenge 2 Links Section
     generateLinks($challenge2, 'Challenge Resources');
-    // Task 2 Links Section
+    generateLinks($task, 'Task');
     generateLinks($task2, 'Task-2');
-    // Task 3 Links Section
     generateLinks($task3, 'Task-3');
     ?>
-
 </body>
 
 </html>
