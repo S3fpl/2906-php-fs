@@ -77,9 +77,9 @@ $task3 = [
 ];
 
 $switch = [
-    ['url' => '/layout/challenge-2/switch-1.php', 'text' => 'switch-1'],
-    ['url' => '/layout/challenge-2/switch-2.php', 'text' => 'switch-2'],
-    ['url' => '/layout/challenge-2/switch-3.php', 'text' => 'switch-3'],
+    ['url' => '/layout/switch/switch-1.php', 'text' => 'switch-1'],
+    ['url' => '/layout/switch/switch-2.php', 'text' => 'switch-2'],
+    ['url' => '/layout/switch/switch-3.php', 'text' => 'switch-3'],
 ];
 
 $allLinks = array_merge($oldLinks, $dumbLinks, $challengeLinks, $switch, $newLinks, $task, $task2, $task3);
