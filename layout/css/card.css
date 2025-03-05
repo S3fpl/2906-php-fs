@@ -12,6 +12,7 @@ body{
     z-index: 1;
     box-shadow: 0px 10px 10px rgb(73, 70, 92);
     transition: 0.5s;
+    
   }
   
   .card:hover {

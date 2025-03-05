@@ -1,0 +1,131 @@
+/* الخلفية المغطية لتأثير التمويه */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(10px); /* تأثير الضباب */
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.4); /* تعتيم الخلفية */
+  z-index: 999;
+}
+
+/* نافذة الـ Pop-up */
+.form-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  z-index: 1000;
+}
+
+/* زر الإغلاق */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 35px;
+  height: 35px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+  color: red;
+}
+
+/* تنسيق العناوين */
+.form-popup h2 {
+  text-align: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* تنسيق الحقول */
+.form-popup label {
+  color: white;
+  font-weight: bold;
+  display: block;
+  margin: 12px 0 5px;
+}
+
+.form-popup input {
+  width: 93%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 16px;
+  transition: 0.3s;
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+}
+
+.form-popup input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* تأثير عند التركيز على الحقل */
+.form-popup input:focus {
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* تنسيق الأزرار */
+.form-popup button:not(.close-btn) {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2));
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  transition: 0.3s;
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+}
+
+.form-popup button:not(.close-btn):hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+}
+
+/* زر تبديل النموذج */
+.switch-btn {
+  background: none;
+  color: lightblue;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.switch-btn:hover {
+  text-decoration: underline;
+}
